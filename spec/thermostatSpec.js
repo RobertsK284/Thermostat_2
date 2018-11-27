@@ -15,12 +15,14 @@ it('starts at 20 degrees', function(){
 });
 
 it('increases in temperature with up()', function() {
-  console.log('test')
   thermostat.up();
   expect(thermostat.getCurrentTemperature()).toEqual(21);
 });
 
-
+it('decreases in temperature with down()', function() {
+  thermostat.down();
+  expect(thermostat.getCurrentTemperature()).toEqual(19);
+});
 
 
 
