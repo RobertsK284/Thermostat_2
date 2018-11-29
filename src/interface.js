@@ -6,6 +6,15 @@ $.get('http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=5f45fe47
   $('#current-temperature').text(data.main.temp);
 })
 
+$('#myonoffswitch').click(function(){
+    if($(this).prop("checked") == true){
+        thermostat.switchPowerSavingModeOn();
+    }
+    else if($(this).prop("checked") == false){
+      thermostat.switchPowerSavingModeOff();
+    }
+});
+
 function displayWeather(city) {
   var url = 'http://api.openweathermap.org/data/2.5/weather?q=' + city;
   var token = '&appid=5f45fe47bd823c145af9085e89e371b1';
@@ -38,17 +47,17 @@ $('#temperature-reset').click(function() { // alternate version of .on(click) wi
   updateTemperature(); // update view
 })
 
-$('#powersaving-on').click(function() { // alternate version of .on(click) with a sprinkle of jQuery syntactic sugar
-  thermostat.switchPowerSavingModeOn(); // update model
-  $('#power-saving').text('on')
-  updateTemperature(); // update view
-})
-
-$('#powersaving-off').click(function() { // alternate version of .on(click) with a sprinkle of jQuery syntactic sugar
-  thermostat.switchPowerSavingModeOff(); // update model
-  $('#power-saving').text('off')
-  updateTemperature(); // update view
-})
+// $('#powersaving-on').click(function() { // alternate version of .on(click) with a sprinkle of jQuery syntactic sugar
+//   thermostat.switchPowerSavingModeOn(); // update model
+//   $('#power-saving').text('on')
+//   updateTemperature(); // update view
+// })
+// 
+// $('#powersaving-off').click(function() { // alternate version of .on(click) with a sprinkle of jQuery syntactic sugar
+//   thermostat.switchPowerSavingModeOff(); // update model
+//   $('#power-saving').text('off')
+//   updateTemperature(); // update view
+// })
 
 function updateTemperature() {
   $('#temperature').text(thermostat.temperature);
